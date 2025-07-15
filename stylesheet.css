@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'FantasyPixelFont';
+  src: url('/fonts/Fantasypixelfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,7 +16,7 @@ html {
   height: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
-  font-family: sans-serif;
+  font-family: 'FantasyPixelFont', sans-serif;
   color: #fff;
   background: transparent;
 }
