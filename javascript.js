@@ -37,6 +37,13 @@ const observer = new IntersectionObserver(
         const idx = slides.indexOf(e.target);
         swapBackground(e.target.dataset.bg);
         revealPanel(e.target, idx);
+        
+        // Hide logo for slides 2, 3, and 4 (indices 1, 2, 3)
+        if (idx >= 1 && idx <= 3) {
+          document.body.classList.add('hide-logo');
+        } else {
+          document.body.classList.remove('hide-logo');
+        }
       }
     }),
   { threshold: 0.6 }

@@ -82,6 +82,11 @@ nav a:active {
   pointer-events: none;
 }
 
+body.hide-logo #logo,
+body.hide-logo #logo-small {
+  display: none;
+}
+
 #logo-small {
   display: none;
   height: 100px;
@@ -158,4 +163,15 @@ button {
 
 button:hover {
   opacity: 0.85;
+}
+
+button:disabled {
+  background: #666;
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button:disabled:hover {
+  opacity: 0.6;
 }
