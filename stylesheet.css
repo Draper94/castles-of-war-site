@@ -19,6 +19,7 @@ html {
   font-family: 'FantasyPixelFont', sans-serif;
   color: #fff;
   background: transparent;
+  letter-spacing: 0.05em;
 }
 
 .bg-layer {
@@ -158,6 +159,8 @@ button {
   cursor: pointer;
   background: #77A53F;
   color: #ffffff;
+  font-family: 'FantasyPixelFont', sans-serif;
+  letter-spacing: 0.05em;
 }
 
 button:hover {
