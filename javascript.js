@@ -23,7 +23,7 @@ function swapBackground(imgUrl) {
 
 //  helper: slide panels in from L / R
 function revealPanel(slide, idx) {
-  const p = slide.querySelector(".panel");
+  const p = slide.querySelector(".pixel-panel");
   p.classList.remove("slide-in-left", "slide-in-right");
   void p.offsetWidth; // restart animation
   p.classList.add(idx % 2 ? "slide-in-right" : "slide-in-left");

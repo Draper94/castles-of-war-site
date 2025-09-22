@@ -74,11 +74,11 @@ nav a:active {
 
 #logo {
   position: fixed;
-  top: 70px;
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  width: 320px;
-  max-width: 70%;
+  width: 480px;
+  max-width: 85%;
   z-index: 0;
   pointer-events: none;
 }
@@ -93,12 +93,19 @@ body.show-nav-logo #homeLink {
 
 #homeLink {
   display: none;
-  height: 50px;
+  height: 70px;
   width: auto;
   cursor: pointer;
 }
 
-@media (max-height: 820px) {
+@media (min-width: 751px) and (max-height: 855px) and (min-height: 501px) {
+  #logo {
+    width: 320px;
+    max-width: 70%;
+  }
+}
+
+@media (max-height: 700px) {
   #logo {
     display: none;
   }
@@ -130,6 +137,11 @@ main {
     max-width: 60% !important;
     max-height: 120px !important;
   }
+
+  .pixel-panel img {
+    max-width: 60% !important;
+    max-height: 120px !important;
+  }
 }
 
 /* Hide GIFs when screen height is too short */
@@ -139,6 +151,14 @@ main {
   }
 
   .panel {
+    padding: 1.5rem;
+  }
+
+  .pixel-panel img {
+    display: none !important;
+  }
+
+  .pixel-panel {
     padding: 1.5rem;
   }
 }
@@ -160,7 +180,23 @@ main {
     margin-bottom: 0.8rem;
   }
 
-  button {
+  .pixel-panel {
+    padding: 1rem;
+  }
+
+  .pixel-panel h1,
+  .pixel-panel h2 {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: 0.8rem;
+  }
+
+  .pixel-panel p {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    margin-bottom: 0.8rem;
+  }
+
+  button,
+  .pixel-panel button {
     margin-top: 1rem;
     padding: 0.5rem 1.2rem;
     font-size: 0.8rem;
@@ -176,6 +212,10 @@ main {
   .panel {
     padding: 0.8rem;
   }
+
+  .pixel-panel {
+    padding: 0.8rem;
+  }
 }
 
 section.slide {
@@ -186,6 +226,10 @@ section.slide {
   align-items: center;
   padding: 80px 1rem 20px 1rem;
   position: relative;
+}
+
+section.slide:first-of-type {
+  padding-top: 140px;
 }
 
 .panel {
@@ -261,6 +305,110 @@ button:disabled:hover {
   margin-right: auto;
 }
 
+/* Pixel Art Panel */
+.pixel-panel {
+  background: #2a2a2a;
+  padding: 2rem;
+  font-family: 'FantasyPixelFont', monospace;
+  color: #ffffff;
+  position: relative;
+  text-align: center;
+  max-width: 650px;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 1s ease;
+  box-shadow:
+    inset 0 0 0 2px #1a1a1a,
+    inset 0 0 0 4px #404040,
+    inset 0 0 0 6px #505050,
+    0 0 0 2px #0d0d0d,
+    0 0 0 4px #666666,
+    0 0 0 6px #808080,
+    0 0 0 8px #999999;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.pixel-panel h1,
+.pixel-panel h2 {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 0 #000000;
+}
+
+.pixel-panel p {
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 0 #000000;
+}
+
+.pixel-panel.slide-in-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.pixel-panel.slide-in-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.pixel-panel img {
+  max-width: 80%;
+  height: auto;
+  border-radius: 4px;
+  margin: 1rem 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pixel-panel img + button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pixel-panel button {
+  background: #77A53F;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  font-family: 'FantasyPixelFont', monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow:
+    inset 0 0 0 2px #5a8030,
+    0 0 0 2px #4a6e25,
+    0 0 0 4px #3a5a1d;
+  text-shadow: 1px 1px 0 #000000;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.pixel-panel button:hover {
+  background: #85b346;
+  box-shadow:
+    inset 0 0 0 2px #6b8d35,
+    0 0 0 2px #5a7c2a,
+    0 0 0 4px #4a6b22;
+}
+
+.pixel-panel button:active {
+  background: #6b9237;
+  transform: translate(1px, 1px);
+  box-shadow:
+    inset 0 0 0 2px #567429,
+    0 0 0 1px #46631f,
+    0 0 0 2px #365018;
+}
+
 @media (max-width: 750px) {
   nav {
     height: 50px;
@@ -273,17 +421,21 @@ button:disabled:hover {
   }
 
   #logo {
-    top: 60px;
-    width: 250px;
-    max-width: 80%;
+    top: 40px;
+    width: 350px;
+    max-width: 90%;
   }
 
   #homeLink {
-    height: 80px;
+    height: 100px;
   }
 
   section.slide {
     padding: 70px 0.5rem 20px 0.5rem;
+  }
+
+  section.slide:first-of-type {
+    padding-top: 120px;
   }
 
   .panel {
@@ -312,6 +464,39 @@ button:disabled:hover {
   }
 
   button {
+    margin-top: 1rem;
+    padding: 0.6rem 1.4rem;
+    font-size: 0.9rem;
+  }
+
+  /* Pixel Panel Mobile Styles */
+  .pixel-panel {
+    padding: 1.5rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .pixel-panel h1,
+  .pixel-panel h2 {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    margin-bottom: 0.8rem;
+  }
+
+  .pixel-panel p {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .pixel-panel img {
+    max-width: 80%;
+    max-height: 180px;
+    object-fit: contain;
+    margin: 0.8rem auto;
+    display: block;
+  }
+
+  .pixel-panel button {
     margin-top: 1rem;
     padding: 0.6rem 1.4rem;
     font-size: 0.9rem;
