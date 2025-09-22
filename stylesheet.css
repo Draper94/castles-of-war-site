@@ -307,7 +307,7 @@ button:disabled:hover {
 
 /* Pixel Art Panel */
 .pixel-panel {
-  background: #2a2a2a;
+  background: #70719E;
   padding: 2rem;
   font-family: 'FantasyPixelFont', monospace;
   color: #ffffff;
@@ -318,13 +318,13 @@ button:disabled:hover {
   transform: translateX(50px);
   transition: all 1s ease;
   box-shadow:
-    inset 0 0 0 2px #1a1a1a,
-    inset 0 0 0 4px #404040,
-    inset 0 0 0 6px #505050,
-    0 0 0 2px #0d0d0d,
-    0 0 0 4px #666666,
-    0 0 0 6px #808080,
-    0 0 0 8px #999999;
+    inset 0 0 0 2px #68415E,
+    inset 0 0 0 4px #68415E,
+    inset 0 0 0 6px #68415E,
+    0 0 0 2px #0D0E20,
+    0 0 0 4px #9D6F58,
+    0 0 0 6px #6E4D3A,
+    0 0 0 8px #6E4D3A;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
