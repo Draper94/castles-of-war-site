@@ -38,11 +38,17 @@ const observer = new IntersectionObserver(
         swapBackground(e.target.dataset.bg);
         revealPanel(e.target, idx);
         
-        // Hide logo for slides 2, 3, and 4 (indices 1, 2, 3)
-        if (idx >= 1 && idx <= 3) {
+        // Hide main logo for all slides except the first one (index 0)
+        if (idx >= 1) {
           document.body.classList.add('hide-logo');
         } else {
           document.body.classList.remove('hide-logo');
+        }
+
+        if (idx >= 1) {
+          document.body.classList.add('show-nav-logo');
+        } else {
+          document.body.classList.remove('show-nav-logo');
         }
       }
     }),
