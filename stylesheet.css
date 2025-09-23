@@ -307,10 +307,10 @@ button:disabled:hover {
 
 /* Pixel Art Panel */
 .pixel-panel {
-  background: #70719E;
+  background: #CAE9D8;
   padding: 2rem;
   font-family: 'FantasyPixelFont', monospace;
-  color: #ffffff;
+  color: #000000;
   position: relative;
   text-align: center;
   max-width: 650px;
@@ -318,12 +318,12 @@ button:disabled:hover {
   transform: translateX(50px);
   transition: all 1s ease;
   box-shadow:
-    inset 0 0 0 2px #68415E,
-    inset 0 0 0 4px #68415E,
-    inset 0 0 0 6px #68415E,
-    0 0 0 2px #0D0E20,
-    0 0 0 4px #9D6F58,
-    0 0 0 6px #6E4D3A,
+    inset 0 0 0 2px #98AFB9,
+    inset 0 0 0 4px #98AFB9,
+    inset 0 0 0 6px #98AFB9,
+    0 0 0 2px #004952,
+    0 0 0 4px #FF7535,
+    0 0 0 6px #FFBF47,
     0 0 0 8px #6E4D3A;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
@@ -334,14 +334,12 @@ button:disabled:hover {
 .pixel-panel h2 {
   font-size: clamp(1.2rem, 2.5vw, 2rem);
   margin-bottom: 12px;
-  text-shadow: 2px 2px 0 #000000;
 }
 
 .pixel-panel p {
   font-size: clamp(0.9rem, 2vw, 1.2rem);
   line-height: 1.6;
   margin-bottom: 1rem;
-  text-shadow: 1px 1px 0 #000000;
 }
 
 .pixel-panel.slide-in-left {
@@ -386,7 +384,6 @@ button:disabled:hover {
     inset 0 0 0 2px #5a8030,
     0 0 0 2px #4a6e25,
     0 0 0 4px #3a5a1d;
-  text-shadow: 1px 1px 0 #000000;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
