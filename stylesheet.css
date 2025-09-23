@@ -138,7 +138,8 @@ main {
     max-height: 120px !important;
   }
 
-  .pixel-panel img {
+  .pixel-panel img,
+  .pixel-panel video {
     max-width: 60% !important;
     max-height: 120px !important;
   }
@@ -154,7 +155,8 @@ main {
     padding: 1.5rem;
   }
 
-  .pixel-panel img {
+  .pixel-panel img,
+  .pixel-panel video {
     display: none !important;
   }
 
@@ -352,7 +354,8 @@ button:disabled:hover {
   transform: translateX(0);
 }
 
-.pixel-panel img {
+.pixel-panel img,
+.pixel-panel video {
   max-width: 80%;
   height: auto;
   border-radius: 4px;
@@ -362,7 +365,8 @@ button:disabled:hover {
   margin-right: auto;
 }
 
-.pixel-panel img + button {
+.pixel-panel img + button,
+.pixel-panel video + button {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -485,7 +489,8 @@ button:disabled:hover {
     margin-bottom: 1rem;
   }
 
-  .pixel-panel img {
+  .pixel-panel img,
+  .pixel-panel video {
     max-width: 80%;
     max-height: 180px;
     object-fit: contain;
