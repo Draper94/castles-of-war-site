@@ -146,7 +146,7 @@ main {
 }
 
 /* Hide GIFs when screen height is too short */
-@media (max-height: 700px) {
+@media (max-height: 600px) {
   .panel img {
     display: none !important;
   }
