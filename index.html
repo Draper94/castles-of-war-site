@@ -37,7 +37,13 @@
           Forge your kingdom, rally your troops, and conquer the realm one
           outpost at a time.
         </p>
-        <button class="nextSlideBtn">Learn More</button>
+        <button id="playTrailerBtn" class="unit-button" data-unit="spearman">
+            <img src="media/play-icon.png" alt="Spearman">
+          </button>
+        <div class="bottom-panel-container nextSlideBtn" role="button" tabindex="0">
+          <img src="media/bottom-panel.png" alt="Learn More" class="bottom-panel-image">
+          <span class="bottom-panel-text">Learn More</span>
+        </div>
       </div>
     </section>
 
@@ -49,8 +55,30 @@
           you're a casual player or a seasoned tactician, the road to
           victory begins here.
         </p>
-        <img src="media/Gif_1.gif" alt="Game demo gif" />
-        <button class="nextSlideBtn">Build Your Kingdom</button>
+
+        <div class="unit-buttons-container">
+          <button class="unit-button" data-unit="spearman">
+            <img src="media/human_spearman.png" alt="Spearman">
+          </button>
+          <button class="unit-button" data-unit="archer">
+            <img src="media/human_archer.png" alt="Archer">
+          </button>
+          <button class="unit-button" data-unit="knight">
+            <img src="media/human_knight.png" alt="Knight">
+          </button>
+          <button class="unit-button" data-unit="builder">
+            <img src="media/human_builder.png" alt="Builder">
+          </button>
+        </div>
+
+        <div class="unit-info" id="unitInfo">
+          <p id="unitDescription">Select a unit to learn more about their abilities and role in battle.</p>
+        </div>
+
+        <div class="bottom-panel-container nextSlideBtn" role="button" tabindex="0">
+          <img src="media/bottom-panel.png" alt="Build Your Kingdom" class="bottom-panel-image">
+          <span class="bottom-panel-text">Build Your Kingdom</span>
+        </div>
       </div>
     </section>
 
@@ -63,7 +91,10 @@
           land.
         </p>
         <img src="media/Gif_2.gif" alt="Build and conquer demo gif" />
-        <button class="nextSlideBtn">View Combat</button>
+        <div class="bottom-panel-container nextSlideBtn" role="button" tabindex="0">
+          <img src="media/bottom-panel.png" alt="View Combat" class="bottom-panel-image">
+          <span class="bottom-panel-text">View Combat</span>
+        </div>
       </div>
     </section>
 
@@ -75,7 +106,10 @@
           counts. Simple to learn, fun to master, and always satisfying.
         </p>
         <img src="media/Gif_3.gif" alt="Combat demo gif" />
-        <button class="nextSlideBtn">Join Us</button>
+        <div class="bottom-panel-container nextSlideBtn" role="button" tabindex="0">
+          <img src="media/bottom-panel.png" alt="Join Us" class="bottom-panel-image">
+          <span class="bottom-panel-text">Join Us</span>
+        </div>
       </div>
     </section>
 
@@ -84,13 +118,24 @@
         <h2>Join the Siege</h2>
         <p>
           Ready your forces. Join a growing community of strategists and
-          adventurers as we prepare for launch.
+          adventurents as we prepare for launch.
         </p>
-        <video src="media/Castles-trailer.mp4" controls alt="Castles of War trailer"></video>
-        <button disabled>Coming Soon!</button>
+         <button disabled><img src="media/steam-icon.png" alt="Steam" class="steam-icon">Coming Soon!</button>
+        <img src="media/Gif_1.gif" alt="Game demo gif" />
       </div>
     </section>
   </main>
+
+  <!-- Trailer Modal -->
+  <div id="trailerModal" class="trailer-modal">
+    <div class="trailer-modal-content">
+      <button id="closeTrailerBtn" class="close-trailer-btn">&times;</button>
+      <video id="trailerVideo" controls>
+        <source src="media/Castles-trailer.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 
   <!-- Javascript -->
   <script src="javascript.js"></script>
