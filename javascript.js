@@ -118,6 +118,11 @@ document.getElementById("homeLink").addEventListener("click", (e) => {
 });
 document.querySelectorAll(".nextSlideBtn").forEach((btn, idx) => {
   btn.addEventListener("click", () => {
+    // Pause the main trailer video if navigating away from slide 2 (index 1)
+    if (idx === 1 && mainTrailerVideo && !mainTrailerVideo.paused) {
+      mainTrailerVideo.pause();
+      showMainCustomPlayButton();
+    }
     if (slides[idx + 1]) slides[idx + 1].scrollIntoView({ behavior: "smooth" });
   });
 
@@ -126,21 +131,31 @@ document.querySelectorAll(".nextSlideBtn").forEach((btn, idx) => {
     btn.addEventListener("keydown", (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
+        // Pause the main trailer video if navigating away from slide 2 (index 1)
+        if (idx === 1 && mainTrailerVideo && !mainTrailerVideo.paused) {
+          mainTrailerVideo.pause();
+          showMainCustomPlayButton();
+        }
         if (slides[idx + 1]) slides[idx + 1].scrollIntoView({ behavior: "smooth" });
       }
     });
   }
 });
 
-// Trailer modal functionality
+// Trailer functionality
 const trailerModal = document.getElementById('trailerModal');
 const trailerVideo = document.getElementById('trailerVideo');
-const playTrailerBtn = document.getElementById('playTrailerBtn');
 const closeTrailerBtn = document.getElementById('closeTrailerBtn');
+const customPlayButton = document.getElementById('customPlayButton');
+
+// Main trailer video (inline on first slide)
+const mainTrailerVideo = document.getElementById('mainTrailerVideo');
+const mainCustomPlayButton = document.getElementById('mainCustomPlayButton');
 
 function openTrailerModal() {
   trailerModal.classList.add('show');
   document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  showModalCustomPlayButton(); // Show custom play button when modal opens
 }
 
 function closeTrailerModal() {
@@ -148,11 +163,55 @@ function closeTrailerModal() {
   trailerVideo.pause(); // Pause video when closing
   trailerVideo.currentTime = 0; // Reset to beginning
   document.body.style.overflow = ''; // Re-enable scrolling
+  showModalCustomPlayButton(); // Reset custom play button for next time
+}
+
+function showModalCustomPlayButton() {
+  if (customPlayButton) customPlayButton.classList.remove('hidden');
+}
+
+function hideModalCustomPlayButton() {
+  if (customPlayButton) customPlayButton.classList.add('hidden');
+}
+
+function showMainCustomPlayButton() {
+  if (mainCustomPlayButton) mainCustomPlayButton.classList.remove('hidden');
+}
+
+function hideMainCustomPlayButton() {
+  if (mainCustomPlayButton) mainCustomPlayButton.classList.add('hidden');
 }
 
 // Event listeners for trailer modal
-playTrailerBtn.addEventListener('click', openTrailerModal);
 closeTrailerBtn.addEventListener('click', closeTrailerModal);
+
+// Modal custom play button functionality
+if (customPlayButton) {
+  customPlayButton.addEventListener('click', () => {
+    trailerVideo.play();
+    hideModalCustomPlayButton();
+  });
+}
+
+// Modal video event listeners
+if (trailerVideo) {
+  trailerVideo.addEventListener('play', hideModalCustomPlayButton);
+  trailerVideo.addEventListener('pause', showModalCustomPlayButton);
+  trailerVideo.addEventListener('ended', showModalCustomPlayButton);
+}
+
+// Main trailer video functionality (inline)
+if (mainCustomPlayButton && mainTrailerVideo) {
+  mainCustomPlayButton.addEventListener('click', () => {
+    mainTrailerVideo.play();
+    hideMainCustomPlayButton();
+  });
+
+  // Show/hide main custom play button based on video state
+  mainTrailerVideo.addEventListener('play', hideMainCustomPlayButton);
+  mainTrailerVideo.addEventListener('pause', showMainCustomPlayButton);
+  mainTrailerVideo.addEventListener('ended', showMainCustomPlayButton);
+}
 
 // Close modal when clicking outside the video
 trailerModal.addEventListener('click', (e) => {
@@ -203,11 +262,20 @@ function triggerButtonGlow(slide, slideIndex) {
 
     // Animate bottom panel text only (not the container)
     bottomPanelContainers.forEach((container) => {
+      const buttonText = container.querySelector('.bottom-panel-text');
+      const isWatchTrailerButton = buttonText && buttonText.textContent.includes('Watch Trailer');
+
       setTimeout(() => {
-        container.classList.add('glow-animation');
-        setTimeout(() => {
-          container.classList.remove('glow-animation');
-        }, 1500);
+        if (isWatchTrailerButton) {
+          // Apply continuous glow for Watch Trailer button
+          container.classList.add('continuous-glow');
+        } else {
+          // Normal one-time glow for other buttons
+          container.classList.add('glow-animation');
+          setTimeout(() => {
+            container.classList.remove('glow-animation');
+          }, 1500);
+        }
       }, buttonIndex * 200);
       buttonIndex++;
     });
@@ -253,6 +321,70 @@ unitButtons.forEach(button => {
       selectUnit(unitType);
     }
   });
+});
+
+// Spark effect for logo clicks
+const logo = document.getElementById('logo');
+const sparkColors = ['spark-red', 'spark-blue', 'spark-yellow', 'spark-green', 'spark-purple', 'spark-orange'];
+
+function createSparkEffect(x, y) {
+  const sparkCount = 15 + Math.random() * 10; // 15-25 sparks
+
+  for (let i = 0; i < sparkCount; i++) {
+    const spark = document.createElement('div');
+    spark.className = `spark ${sparkColors[Math.floor(Math.random() * sparkColors.length)]}`;
+
+    // Position spark at click location
+    spark.style.left = x + 'px';
+    spark.style.top = y + 'px';
+
+    // Calculate random pop direction (360 degrees)
+    const angle = Math.random() * Math.PI * 2;
+    const popDistance = 50 + Math.random() * 100; // 50-150px pop distance
+    const popX = Math.cos(angle) * popDistance;
+    const popY = Math.sin(angle) * popDistance;
+
+    // Additional horizontal drift while falling
+    const driftX = (Math.random() - 0.5) * 150;
+
+    // Set CSS custom properties
+    spark.style.setProperty('--pop-x', popX + 'px');
+    spark.style.setProperty('--pop-y', popY + 'px');
+    spark.style.setProperty('--drift-x', driftX + 'px');
+
+    document.body.appendChild(spark);
+
+    // Remove spark after animation
+    setTimeout(() => {
+      if (spark.parentNode) {
+        spark.parentNode.removeChild(spark);
+      }
+    }, 2200);
+  }
+}
+
+if (logo) {
+  logo.addEventListener('click', (e) => {
+    console.log('Logo clicked!'); // Debug log
+    e.preventDefault();
+    e.stopPropagation();
+    // Use the actual click coordinates
+    const x = e.clientX;
+    const y = e.clientY;
+    console.log('Creating sparks at:', x, y); // Debug log
+    createSparkEffect(x, y);
+  });
+  console.log('Logo click listener added'); // Debug log
+} else {
+  console.log('Logo element not found!'); // Debug log
+}
+
+// Test function - remove this after debugging
+document.addEventListener('keydown', (e) => {
+  if (e.key === ' ' && e.shiftKey) {
+    console.log('Test spark effect triggered');
+    createSparkEffect(window.innerWidth / 2, 200);
+  }
 });
 
 // Initial state

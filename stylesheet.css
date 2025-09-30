@@ -116,6 +116,9 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   z-index: 2;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 
@@ -163,10 +166,14 @@ nav a:active {
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  width: 480px;
-  max-width: 85%;
-  z-index: 0;
-  pointer-events: none;
+  width: 600px;
+  max-width: 90%;
+  z-index: 100;
+  pointer-events: auto;
+  cursor: pointer;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 body.hide-logo #logo {
@@ -186,6 +193,9 @@ body.hide-vashta-link nav a[href*="vashtaentertainment"] {
   height: 100px;
   width: auto;
   cursor: pointer;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 @media (min-width: 751px) and (max-height: 855px) and (min-height: 501px) {
@@ -318,12 +328,12 @@ section.slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px 1rem 20px 1rem;
+  padding: 50px 1rem;
   position: relative;
 }
 
 section.slide:first-of-type {
-  padding-top: 140px;
+  padding-top: 280px;
 }
 
 .panel {
@@ -495,6 +505,61 @@ button:disabled:hover {
   margin-right: auto;
 }
 
+.video-container-inline {
+  position: relative;
+  display: inline-block;
+  max-width: 95%;
+  margin: 1rem auto;
+}
+
+.video-container-inline video {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+}
+
+.video-container-inline .custom-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #70719E !important;
+  border: 2px solid #6E4D3A !important;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  pointer-events: auto;
+  z-index: 100;
+  padding: 8px;
+}
+
+.video-container-inline .custom-play-overlay:hover {
+  filter: brightness(1.1) !important;
+}
+
+.video-container-inline .custom-play-overlay:active {
+  filter: brightness(0.9) !important;
+}
+
+.video-container-inline .custom-play-overlay img {
+  width: 24px;
+  height: 24px;
+  image-rendering: auto;
+  display: block;
+  margin: 0 0 0 4px;
+}
+
+.video-container-inline .custom-play-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .pixel-panel img + button,
 .pixel-panel video + button {
   display: block;
@@ -563,11 +628,11 @@ button:disabled:hover {
   }
 
   section.slide {
-    padding: 70px 0.5rem 20px 0.5rem;
+    padding: 40px 0.5rem;
   }
 
   section.slide:first-of-type {
-    padding-top: 120px;
+    padding-top: 220px;
   }
 
   .panel {
@@ -629,6 +694,22 @@ button:disabled:hover {
     display: block !important;
   }
 
+  .video-container-inline {
+    max-width: 90%;
+  }
+
+  .video-container-inline .custom-play-overlay {
+    width: 48px;
+    height: 48px;
+    padding: 8px;
+  }
+
+  .video-container-inline .custom-play-overlay img {
+    width: 24px;
+    height: 24px;
+    margin: 0 0 0 4px;
+  }
+
   .pixel-panel button {
     margin-top: 1rem;
     padding: 0.6rem 1.4rem;
@@ -688,6 +769,15 @@ button:disabled:hover {
   transform: scale(1.1);
 }
 
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #trailerVideo {
   width: 100%;
   height: 100%;
@@ -696,6 +786,47 @@ button:disabled:hover {
   object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.custom-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #70719E;
+  border: 2px solid #6E4D3A;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  pointer-events: auto;
+  z-index: 10002;
+}
+
+.custom-play-overlay:hover {
+  filter: brightness(1.1);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.custom-play-overlay:active {
+  filter: brightness(0.9);
+  transform: translate(-50%, -50%) scale(0.98);
+}
+
+.custom-play-overlay img {
+  width: 40px;
+  height: 40px;
+  image-rendering: auto;
+  margin-left: 6px;
+}
+
+.custom-play-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 @media (max-width: 750px) {
@@ -709,6 +840,17 @@ button:disabled:hover {
     font-size: 30px;
     width: 40px;
     height: 40px;
+  }
+
+  .custom-play-overlay {
+    width: 60px;
+    height: 60px;
+  }
+
+  .custom-play-overlay img {
+    width: 30px;
+    height: 30px;
+    margin-left: 4px;
   }
 }
 
@@ -725,10 +867,13 @@ button:disabled:hover {
   background: #70719E !important;
   border: 2px solid #68415E !important;
   cursor: pointer;
-  padding: 4px;
+  padding: 0px;
   transition: all 0.2s ease;
   border-radius: 4px;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  transform: scale(0.9);
+  transform-origin: center;
 }
 
 .unit-button img {
@@ -737,6 +882,8 @@ button:disabled:hover {
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
   transition: filter 0.2s ease;
+  transform: scale(1.67);
+  transform-origin: center;
 }
 
 .unit-button:hover img {
@@ -844,6 +991,15 @@ button:disabled:hover {
   animation: textGlow 1.5s ease-in-out;
 }
 
+.bottom-panel-container.continuous-glow .bottom-panel-text {
+  text-shadow:
+    1px 1px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000;
+  animation: textGlow 2s ease-in-out infinite;
+}
+
 #playTrailerBtn.glow-animation {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(112, 113, 158, 0.6) !important;
   animation: buttonGlow 1.5s ease-in-out;
@@ -908,4 +1064,60 @@ button:disabled:hover {
 
 .bottom-panel-container.disabled:active {
   filter: none;
+}
+
+/* Spark Effect */
+.spark {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  animation: sparkPop 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes sparkPop {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.2);
+    opacity: 1;
+  }
+  15% {
+    transform: translate(var(--pop-x), var(--pop-y)) rotate(90deg) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(var(--pop-x) + var(--drift-x)), calc(var(--pop-y) + 100vh)) rotate(360deg) scale(0.3);
+    opacity: 0;
+  }
+}
+
+.spark.spark-red {
+  background: radial-gradient(circle, #FF7535, #FF7535);
+  box-shadow: 0 0 6px #FF7535;
+}
+
+.spark.spark-blue {
+  background: radial-gradient(circle, #CAE9D8, #CAE9D8);
+  box-shadow: 0 0 6px #c5c5e4;
+}
+
+.spark.spark-yellow {
+  background: radial-gradient(circle, #FFBF47, #FFBF47);
+  box-shadow: 0 0 6px #ffff44;
+}
+
+.spark.spark-green {
+  background: radial-gradient(circle, #3C7251, #3C7251);
+  box-shadow: 0 0 6px #004952;
+}
+
+.spark.spark-purple {
+  background: radial-gradient(circle, #6E4D3A, #6E4D3A);
+  box-shadow: 0 0 6px #6E4D3A;
+}
+
+.spark.spark-orange {
+  background: radial-gradient(circle, #ff8844, #ff4400);
+  box-shadow: 0 0 6px #ff8844;
 }

@@ -31,15 +31,34 @@
   <!-- Slides -->
   <main>
     <div class="navbar-spacer"></div>
+
     <section class="slide" data-bg="media/page_1.png">
       <div class="pixel-panel">
         <p>
-          Forge your kingdom, rally your troops, and conquer the realm one
-          outpost at a time.
+          Forge your kingdom, rally your troops, conquer the realm
         </p>
-        <button id="playTrailerBtn" class="unit-button" data-unit="spearman">
-            <img src="media/play-icon.png" alt="Spearman">
-          </button>
+
+        <div class="bottom-panel-container nextSlideBtn" role="button" tabindex="0">
+          <img src="media/bottom-panel.png" alt="Learn More" class="bottom-panel-image">
+          <span class="bottom-panel-text">Watch Trailer</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-bg="media/page_1.png">
+      <div class="pixel-panel">
+        <p>
+          Gameplay Trailer:
+        </p>
+        <div class="video-container-inline">
+          <video id="mainTrailerVideo" controls>
+            <source src="media/Castles-trailer.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div id="mainCustomPlayButton" class="custom-play-overlay">
+            <img src="media/play-icon.png" alt="Play">
+          </div>
+        </div>
         <div class="bottom-panel-container nextSlideBtn" role="button" tabindex="0">
           <img src="media/bottom-panel.png" alt="Learn More" class="bottom-panel-image">
           <span class="bottom-panel-text">Learn More</span>
@@ -130,10 +149,15 @@
   <div id="trailerModal" class="trailer-modal">
     <div class="trailer-modal-content">
       <button id="closeTrailerBtn" class="close-trailer-btn">&times;</button>
-      <video id="trailerVideo" controls>
-        <source src="media/Castles-trailer.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <div class="video-container">
+        <video id="trailerVideo" controls>
+          <source src="media/Castles-trailer.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div id="customPlayButton" class="custom-play-overlay">
+          <img src="media/play-icon.png" alt="Play">
+        </div>
+      </div>
     </div>
   </div>
 
