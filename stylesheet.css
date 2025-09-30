@@ -240,8 +240,8 @@ main {
     max-height: 120px !important;
   }
 
-  .pixel-panel img,
-  .pixel-panel video {
+  .pixel-panel img:not(.video-container-inline video),
+  .pixel-panel video:not(.video-container-inline video) {
     max-width: 60% !important;
     max-height: 120px !important;
   }
@@ -257,8 +257,8 @@ main {
     padding: 1.5rem;
   }
 
-  .pixel-panel img,
-  .pixel-panel video {
+  .pixel-panel img:not(.video-container-inline *),
+  .pixel-panel video:not(.video-container-inline video) {
     display: none !important;
   }
 
@@ -685,8 +685,8 @@ button:disabled:hover {
     margin-bottom: 1rem;
   }
 
-  .pixel-panel img,
-  .pixel-panel video {
+  .pixel-panel img:not(.video-container-inline *),
+  .pixel-panel video:not(.video-container-inline video) {
     max-width: 80% !important;
     max-height: 180px !important;
     object-fit: contain;
@@ -695,7 +695,7 @@ button:disabled:hover {
   }
 
   .video-container-inline {
-    max-width: 90%;
+    max-width: 95%;
   }
 
   .video-container-inline .custom-play-overlay {
