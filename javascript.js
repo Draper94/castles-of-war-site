@@ -203,6 +203,21 @@ if (trailerVideo) {
 // Main trailer video functionality (inline)
 if (mainCustomPlayButton && mainTrailerVideo) {
   mainCustomPlayButton.addEventListener('click', () => {
+    // Check if on mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 750;
+
+    if (isMobile) {
+      // Request fullscreen on mobile
+      if (mainTrailerVideo.requestFullscreen) {
+        mainTrailerVideo.requestFullscreen();
+      } else if (mainTrailerVideo.webkitRequestFullscreen) {
+        mainTrailerVideo.webkitRequestFullscreen();
+      } else if (mainTrailerVideo.webkitEnterFullscreen) {
+        // iOS Safari
+        mainTrailerVideo.webkitEnterFullscreen();
+      }
+    }
+
     mainTrailerVideo.play();
     hideMainCustomPlayButton();
   });
