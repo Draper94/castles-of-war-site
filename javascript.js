@@ -58,9 +58,10 @@ function swapBackground(imgUrl, slideIndex = 0) {
   const slideColors = [
     { top: '#4D8BFF', bottom: '#0D0E20' }, // Slide 1
     { top: '#4D8BFF', bottom: '#0D0E20' }, // Slide 2
-    { top: '#D8C9C0', bottom: '#130E18' }, // Slide 3
-    { top: '#180900', bottom: '#130E18' }, // Slide 4
-    { top: '#000000', bottom: '#0A0B18' }, // Slide 5
+    { top: '#4D8BFF', bottom: '#0D0E20' }, // Slide 3
+    { top: '#D8C9C0', bottom: '#130E18' }, // Slide 4
+    { top: '#180900', bottom: '#130E18' }, // Slide 5
+    { top: '#000000', bottom: '#0A0B18' }, // Slide 6
   ];
 
   const colors = slideColors[slideIndex] || slideColors[0];
