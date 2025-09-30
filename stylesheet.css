@@ -257,13 +257,18 @@ main {
     padding: 1.5rem;
   }
 
-  .pixel-panel img:not(.video-container-inline *),
+  .pixel-panel img:not(.video-container-inline *):not(.unit-button img):not(.bottom-panel-image),
   .pixel-panel video:not(.video-container-inline video) {
     display: none !important;
   }
 
   .pixel-panel {
     padding: 1.5rem;
+  }
+
+  /* Shrink trailer incrementally based on height */
+  .video-container-inline {
+    max-width: min(95%, calc(95% * (100vh / 600px)));
   }
 }
 
@@ -304,6 +309,36 @@ main {
     margin-top: 1rem;
     padding: 0.5rem 1.2rem;
     font-size: 0.8rem;
+  }
+}
+
+/* Ensure buttons and unit buttons remain visible on short but wide screens */
+@media (min-width: 751px) and (max-height: 600px) {
+  .bottom-panel-container {
+    position: absolute;
+    top: calc(100% - 8px);
+    z-index: 10 !important;
+  }
+
+  .bottom-panel-image {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .unit-buttons-container {
+    display: flex !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+
+  .unit-button {
+    display: inline-block !important;
+  }
+
+  .unit-button img {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
 
