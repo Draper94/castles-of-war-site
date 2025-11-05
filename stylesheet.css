@@ -431,11 +431,21 @@ button:disabled:hover {
 }
 
 .steam-icon {
-  width: 40px;
-  height: 40px;
-  margin-right: 8px;
-  vertical-align: middle;
+  width: 200px;
+  height: auto;
+  margin: 1rem auto;
+  display: block;
+  cursor: pointer;
+  transition: filter 0.2s ease;
   image-rendering: auto;
+}
+
+.steam-icon:hover {
+  filter: brightness(1.1);
+}
+
+.steam-icon:active {
+  filter: brightness(0.9);
 }
 
 /* Play Trailer Button */
