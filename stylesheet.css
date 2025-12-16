@@ -431,21 +431,26 @@ button:disabled:hover {
 }
 
 .steam-icon {
-  width: 200px;
+  width: clamp(60px, 15vw, 100px);
   height: auto;
+  max-width: 100px;
   margin: 1rem auto;
   display: block;
   cursor: pointer;
-  transition: filter 0.2s ease;
-  image-rendering: auto;
+  transition: filter 0.2s ease, transform 0.1s ease;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 .steam-icon:hover {
-  filter: brightness(1.1);
+  filter: brightness(1.4) contrast(1.1);
+  transform: scale(1.05);
 }
 
 .steam-icon:active {
-  filter: brightness(0.9);
+  filter: brightness(0.6) contrast(1.2);
+  transform: scale(0.98);
 }
 
 /* Play Trailer Button */
@@ -759,6 +764,11 @@ button:disabled:hover {
     margin-top: 1rem;
     padding: 0.6rem 1.4rem;
     font-size: 0.9rem;
+  }
+
+  .steam-icon {
+    width: clamp(50px, 20vw, 80px);
+    max-width: 80px;
   }
 }
 
